@@ -163,26 +163,24 @@
     let slicing = 3;
     if(players == 2) slicing = 2;
     if(players < 3){
-      let infTechs = availableTechs.slice(0, slicing);
-      let otherTechs = availableTechs.slice(slicing);
+      let noInfTechs = availableTechs.slice(0, slicing);
+      let infTechs = availableTechs.slice(slicing);
       techs = [
         ...infTechs.map(t => {
           return {
             name: t,
-            inf: `+4 Influence card`,
-            class: 'inf'
+            inf:  players == 1 ? `+4 Influence card` : `both cards`,
+            class:  players == 1 ? 'inf' : 'both'
           }
         }),
-        ...otherTechs.map(t => {
+        ...noInfTechs.map(t => {
           return {
             name: t,
-            inf: players == 1 ? `0 Influence card` : `both cards`,
-            class: players == 1 ? 'no_inf' : 'both'
+            inf: '0 Influence card',
+            class: 'no_inf'
           }
         })
       ];
-    }else if(players == 2){
-      
     }else{
       techs = availableTechs.map(t => {
         return {
@@ -248,10 +246,10 @@
           <tr>
             <th>House</th>
               {#if players == 1}
-                <th>Just +4 Influence card</th>
                 <th>Just 0 Influence card</th>
-              {:else if players == 2}
                 <th>Just +4 Influence card</th>
+              {:else if players == 2}
+                <th>Just 0 Influence card</th>
                 <th>Both cards</th>
               {:else}
                 <th>Cards to use</th>
@@ -260,9 +258,9 @@
           {#each [...fallenHouses.sort((a,b) => a.name.localeCompare(b.name))] as h}
             <tr>
               <td class="house_name">{h.name}</td>
-              {#if players < 3}<td class="inf">{techs.filter(t => h.techs.includes(t.name)).filter(t => t.class == 'inf').map(t => t.name).join(', ')}</td>{/if}
+              {#if players < 3}<td class="no_inf">{techs.filter(t => h.techs.includes(t.name)).filter(t => t.class == 'no_inf').map(t => t.name).join(', ')}</td>{/if}
               {#if players == 1}
-                <td class="no_inf">{techs.filter(t => h.techs.includes(t.name)).filter(t => t.class == 'no_inf').map(t => t.name).join(', ')}</td>
+                <td class="inf">{techs.filter(t => h.techs.includes(t.name)).filter(t => t.class == 'inf').map(t => t.name).join(', ')}</td>
               {:else}
                 <td class="both">{techs.filter(t => h.techs.includes(t.name)).filter(t => t.class == 'both').map(t => t.name).join(', ')}</td>
               {/if}
