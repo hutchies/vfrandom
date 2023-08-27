@@ -1,0 +1,58 @@
+:root {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 3vmin;
+  /*line-height: 24px;
+  font-weight: 400;*/
+  background-color: black;
+  color: white;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 1.1;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1280px;
+  /*margin: 0 auto;*/
+  padding: 2rem;
+  /*text-align: center;*/
+}
+
+button {
+  background-color: white;
+  color: black;
+  font-size: 3vmin;
+  
+}
+
+ul {
+  list-style-type: none;
+}
+
